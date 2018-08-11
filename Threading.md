@@ -1,4 +1,6 @@
 
+#Threading- Zusammenfassung
+
 **Threading Einfürhung:**
 Das Betriebssystem simuliert Multitasking.
 Der Scheduler wechselt so schnell zwischen den verschiedenen Prozessen (Threads), dass sie sozusagen Parallel laufen.
