@@ -46,6 +46,70 @@ Der Adressraum von Threads muss im gegensatz zu Prozessen nicht getauscht werden
 
 Threads sind daher "leichtgewichtige"- Prozesse.
 
+**Deadlocks**
+Zwei Threads die sich in in geschützten Bereich befinden und gegenseitig aufeinander angewiesen sind. Thread1 kann den geschützten Bereich nicht verlassen, weil er auf Thread2 warten muss, Thread2 kann aber nicht fortfahren, solange Thread1 im geschüzten Bereich ist.
+
+Möglichkeiten die Chancen eines Deadlocks zu verringern gibt es.
+
+Zum Biespiel:
+Locks (bzw. Mutexe)
+Events und Bedingungsvariablen
+Queues
+Atomare Variablen (in Standard-Python nicht vorhanden)
+
+In Java werden meistens Synchronisations-Methoden verwendet:
+
+```java
+public void addName(String name) {
+    synchronized(this) {
+    lastName = name;
+    nameCount++;
+ }
+   nameList.add(name);
+}
+
+public class MsLunch {
+    private long c1 = 0;
+    private long c2 = 0;
+    private Object lock1 = new Object();
+    private Object lock2 = new Object();
+    
+    public void inc1() {
+        synchronized(lock1) {
+            c1++;
+        }
+    }
+        
+    public void inc2() {
+        synchronized(lock2) {
+            c2++;
+        }
+     }
+}
+
+```
+
+Eine weitere Art der Java "Thread-Synchronisation" sind **Atomic Variables**:
+```java
+import java.util.concurrent.atomic.AtomicInteger;
+
+class AtomicCounter {
+    private AtomicInteger c = new AtomicInteger(0);
+    
+    public void increment() {
+        c.incrementAndGet();
+    }
+    
+    public void decrement() {
+        c.decrementAndGet();
+    }
+    
+    public int value() {
+        return c.get();
+    }
+}
+```java
+
 **Threading in Python**
 Es gibt zwei grundlegende Module fur Multi-Threading in Python:
 Das Modul thread (veraltet) und das Modul threading
