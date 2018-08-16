@@ -14,6 +14,10 @@ Threads teilen sich den Heap
 Im kritisches Bereich kann sich nur 1 Thread gleichzeitig befinden.
 Hier werden jene Operationen durchgeführt, die nicht unterbrochen werden dürfen.
 
+**Livelocks:**
+Ein Livelock ist einem Deadlock ähnlich, außer dass sich die Zustände der Prozesse, die in dem Livelock involviert sind, ständig in Bezug aufeinander ändern, keiner voranschreitet. Livelock ist ein spezieller Fall von Ressourcenmangel; Die allgemeine Definition besagt nur, dass ein bestimmter Prozess nicht voranschreitet
+
+
 **Starvation:**
 Wenn ein Thread keinen oder kaum Fortschritt machen kann,
 weil die Ressourcen ständig von einem anderen Thread blockiert
@@ -47,6 +51,13 @@ Der Adressraum von Threads muss im gegensatz zu Prozessen nicht getauscht werden
 Threads sind daher "leichtgewichtige"- Prozesse.
 
 **Deadlocks**
+Die 4 Deadlock-Bedingungen:
+
+Mutual Exclusion: Der Zugriff auf die Betriebsmittel ist exklusiv
+Hold and Wait: Die Prozesse fordern neue Betriebsmittel an und halten dabei aber die Rechte an Betriebsmitteln, die sie schon haben.
+No Preemption: Die Betriebsmittel werden ausschließlich durch die Prozesse freigegeben.
+Circular Wait: Nicht weniger als zwei Prozesse warten in einem geschlossenen System.
+
 Zwei Threads die sich in in geschützten Bereich befinden und gegenseitig aufeinander angewiesen sind. Thread1 kann den geschützten Bereich nicht verlassen, weil er auf Thread2 warten muss, Thread2 kann aber nicht fortfahren, solange Thread1 im geschüzten Bereich ist.
 
 Möglichkeiten die Chancen eines Deadlocks zu verringern gibt es.
